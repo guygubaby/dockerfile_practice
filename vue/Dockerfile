@@ -1,7 +1,7 @@
 # build
 FROM node:11-alpine as builder
-COPY . /src
 WORKDIR /src
+COPY . .
 RUN npm config set registry https://registry.npm.taobao.org && \
 npm i && \
 npm run build
