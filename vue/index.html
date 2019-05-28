@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <meta name="theme-color" content="#db5945">
+  <title><%= VUE_APP_TITLE %></title>
+  <!-- 使用CDN加速的CSS文件 -->
+  <% for(var css of htmlWebpackPlugin.options.cdn.css) { %>
+  <link href="<%=css%>" rel="preload" as="style">
+  <link rel="stylesheet" href="<%=css%>" as="style">
+  <% } %>
+
+  <style>
+    html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .yango {
+      background-color: #303133;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .yango__main {
+      user-select: none;
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .yango__footer {
+      width: 100%;
+      flex-grow: 0;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    .yango__footer>a {
+      font-size: 12px;
+      color: #ABABAB;
+      text-decoration: none;
+    }
+
+    .yango__loading {
+      height: 32px;
+      width: 32px;
+      margin-bottom: 20px;
+    }
+
+    .yango__title {
+      color: #FFF;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .yango__sub-title {
+      color: #ABABAB;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but yango-greenhome-management doesn't work properly without JavaScript enabled. Please enable
+      it to continue.</strong>
+  </noscript>
+  <div id="app">
+    <div class="yango">
+      <div class="yango__main">
+        <img class="yango__loading" src="./image/loading/loading-spin.svg" alt="loading">
+        <div class="yango__title">
+          正在加载资源...
+        </div>
+        <div class="yango__sub-title">
+          初次加载资源可能需要较多时间 请耐心等待
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 使用CDN加速的JS文件 -->
+  <% for(var js of htmlWebpackPlugin.options.cdn.js) { %>
+  <link href="<%=js%>" rel="preload" as="script">
+  <script src="<%=js%>"></script>
+  <% } %>
+  <!-- built files will be auto injected -->
+</body>
+
+</html>
