@@ -39,21 +39,19 @@ module.exports = {
       vuex: "Vuex",
       dayjs: "dayjs",
       xlsx: "XLSX",
-      "ali-oss": "OSS"
     };
 
     config.externals(externals);
     const cdn = {
       css: ["//unpkg.com/element-ui/lib/theme-chalk/index.css"],
       js: [
-        "//gosspublic.alicdn.com/aliyun-oss-sdk-6.1.1.min.js",
-        "//unpkg.com/xlsx@0.14.3/dist/xlsx.full.min.js",
-        "//unpkg.com/dayjs@1.8.14/dayjs.min.js",
-        "//cdn.staticfile.org/vue/2.6.6/vue.min.js",
-        "//cdn.staticfile.org/vue-router/3.0.2/vue-router.min.js",
-        "//cdn.staticfile.org/vuex/3.1.0/vuex.min.js",
-        "//cdn.staticfile.org/axios/0.19.0-beta.1/axios.min.js",
-        "//unpkg.com/element-ui/lib/index.js"
+        '//unpkg.com/xlsx@0.14.3/dist/xlsx.full.min.js',
+        '//unpkg.com/dayjs@1.8.14/dayjs.min.js',
+        '//unpkg.com/vue@2.6.6/dist/vue.min.js',
+        '//unpkg.com/vue-router@3.0.2/dist/vue-router.min.js',
+        '//unpkg.com/vuex@3.1.0/dist/vuex.min.js',
+        '//unpkg.com/axios@0.18.0/dist/axios.min.js',
+        '//unpkg.com/element-ui@2.8.2/lib/index.js'
       ]
     };
     config.plugin("html").tap(args => {
@@ -68,11 +66,9 @@ module.exports = {
     );
   },
   configureWebpack: {
-    plugins: process.env.NODE_ENV === "production" ?
-      [
-        // new BundleAnalyzerPlugin()
-      ] :
-      []
+    plugins: process.env.NODE_ENV === "production" ? [
+      // new BundleAnalyzerPlugin()
+    ] : []
   },
   productionSourceMap: process.env.NODE_ENV !== "production" // 打包时不生成.map文件
 };
