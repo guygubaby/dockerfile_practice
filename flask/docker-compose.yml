@@ -10,6 +10,7 @@ services:
       - flask_net
 
   service.db:
+    container_name: mongodb # mongodb connect use this container name as url
     image: "mongo:latest"
     networks:
       - flask_net
