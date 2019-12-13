@@ -1,0 +1,42 @@
+version: "3.7"
+services:
+  server:
+    image: "guygubaby/server-xxxxx:latest"
+    ports:
+      - 5000:80
+      - 443:443
+    networks:
+      - backend
+      - frontend
+    restart: on-failure
+    healthcheck:
+      test: curl -f http://localhost/ || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  mongo:
+    image: "mongo:latest"
+    networks:
+      - backend
+    ports:
+      - 27017
+    volumes:
+      - mongo-data:/data/db
+
+  # 后台内部人员自己用的
+  web:
+    image: "guygubaby/web-xxxxx:latest"
+    networks:
+      - frontend
+    ports:
+      - 8080:80
+
+
+networks:
+  backend:
+  frontend:
+
+volumes:
+  mongo-data:
